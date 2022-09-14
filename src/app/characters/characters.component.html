@@ -1,6 +1,6 @@
 <div class="container py-5 text-center">
   <div class="row" *ngIf="characters!=null; else espera">
-    <div class="col py-3" *ngFor="let char of characters">
+    <div class="col py-3" *ngFor="let char of characters.results">
       <div class="card" style="width: 18rem;">
         <img src={{char.image}} class="card-img-top" alt="...">
         <div class="card-body d-grid">

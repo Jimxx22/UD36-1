@@ -12,7 +12,8 @@ export class CharactersComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(){
-    this.http.get("https://rickandmortyapi.com/api/character/"+this.random()+","+this.random()+","+this.random()+","+this.random()+","+this.random()+","+this.random()+","+this.random()+","+this.random())
+    //this.http.get("https://rickandmortyapi.com/api/character/"+this.random()+","+this.random()+","+this.random()+","+this.random()+","+this.random()+","+this.random()+","+this.random()+","+this.random())
+    this.http.get("https://rickandmortyapi.com/api/character/")
     .subscribe(
       result => {
         this.characters=result;
