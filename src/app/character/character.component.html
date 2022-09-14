@@ -1,0 +1,44 @@
+<div class="container p-5">
+  <div class="row">
+    <div class="col text-center">
+      <img
+        src="{{ character.image }}"
+        alt="{{ character.name }}"
+        class="img-fluid rounded"
+      />
+    </div>
+    <div class="col">
+      <div class="row">
+        <div class="col border-bottom border-warning border-5 mb-3">
+          <h1>{{ character.name }}</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>ESPECIE: {{ character.species }}</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>GENERO: {{ character.gender }}</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>ORIGEN: {{ character.origin.name }}</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>LOCALIZACION: {{ character.location.name }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+      <h4>EPISODIOS: </h4>
+      <div class="col" *ngFor="let epi of character.episode">
+        <p>{{epi}}</p>
+      </div>
+  </div>
+</div>

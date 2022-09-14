@@ -7,13 +7,15 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { CharactersComponent } from './characters/characters.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { HttpClientModule } from "@angular/common/http";
+import { CharacterComponent } from './character/character.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutUsComponent,
     CharactersComponent,
-    InicioComponent
+    InicioComponent,
+    CharacterComponent
   ],
   imports: [
     BrowserModule,

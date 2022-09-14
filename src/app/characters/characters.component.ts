@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { ServiceService } from "../service.service";
 
 @Component({
   selector: 'app-characters',
@@ -9,22 +9,12 @@ import { HttpClient } from "@angular/common/http";
 export class CharactersComponent implements OnInit {
 
   characters:any =null;
-  constructor(private http: HttpClient) { }
+  constructor(private serviceService: ServiceService) { }
 
   ngOnInit(){
-    this.http.get("https://rickandmortyapi.com/api/character/"+this.random()+","+this.random()+","+this.random()+","+this.random()+","+this.random()+","+this.random()+","+this.random()+","+this.random())
-    .subscribe(
-      result => {
-        this.characters=result;
-      },
-      error =>{
-        console.log("error");
-      }
-    );
-  }
-
-  random(){
-    return Math.trunc(Math.random() * 826) + 1;
+    this.serviceService.retornar().subscribe(
+      result => this.characters=result
+    )
   }
 
 }
