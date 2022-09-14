@@ -16,7 +16,7 @@ const routes: Routes = [
     component:CharactersComponent
   },
   {
-    path:'inicio',
+    path:'',
     component:InicioComponent
   },
   {
