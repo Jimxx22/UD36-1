@@ -5,6 +5,7 @@ import { AboutUsComponent } from "./about-us/about-us.component";
 import { CharactersComponent } from "./characters/characters.component";
 import { InicioComponent } from "./inicio/inicio.component";
 import { CharacterComponent } from "./character/character.component";
+import { AddCharacterComponent } from './add-character/add-character.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
   {
     path: 'character/:id',
     component:CharacterComponent
+  },
+  {
+    path: 'add', component: AddCharacterComponent
   }
 ];
 
