@@ -2,43 +2,44 @@
   <div class="row">
     <div class="col text-center">
       <img
-        src="{{ character.image }}"
-        alt="{{ character.name }}"
+        src="{{ currentCharacter.image }}"
+        alt="{{ currentCharacter.name }}"
         class="img-fluid rounded"
       />
     </div>
-    <div class="col">
-      <div class="row">
-        <div class="col border-bottom border-warning border-5 mb-3">
-          <h1>{{ character.name }}</h1>
+    <form>
+      <div class="col">
+        <div class="form-grup">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" required [(ngModel)]="currentCharacter.name" name="name"/>
+        </div>
+        <div class="form-grup">
+          <label for="status">Status</label>
+          <input type="text" class="form-control" id="status" required [(ngModel)]="currentCharacter.status" name="status"/>
+        </div>
+        <div class="form-grup">
+          <label for="species">Species</label>
+          <input type="text" class="form-control" id="species" required [(ngModel)]="currentCharacter.species" name="species"/>
+        </div>
+        <div class="form-grup">
+          <label for="gender">Gender</label>
+          <input type="text" class="form-control" id="gender" required [(ngModel)]="currentCharacter.gender" name="gender"/>
+        </div>
+        <div class="form-grup">
+          <label for="origin">Origin</label>
+          <input type="text" class="form-control" id="origin" required [(ngModel)]="currentCharacter.origin" name="origin"/>
+        </div>
+        <div class="form-grup">
+          <label for="image">Image URL</label>
+          <input type="text" class="form-control" id="image" required [(ngModel)]="currentCharacter.image" name="image"/>
         </div>
       </div>
-      <div class="row">
-        <div class="col">
-          <h4>ESPECIE: {{ character.species }}</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <h4>GENERO: {{ character.gender }}</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <h4>ORIGEN: {{ character.origin.name }}</h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <h4>LOCALIZACION: {{ character.location.name }}</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row mt-5">
-      <h4>EPISODIOS: </h4>
-      <div class="col" *ngFor="let epi of character.episode">
-        <p>{{epi}}</p>
-      </div>
+    </form>
+
+    <button class="btn btn-danger mt-2" (click)="deleteCharacter()">Delete</button>
+    <button type="submit" class="btn btn-success mt-2" (click)="updateCharacter()">Update</button>
+
+    <p>{{message}}</p>
+
   </div>
 </div>

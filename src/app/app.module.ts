@@ -6,8 +6,12 @@ import { AppComponent } from './app.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CharactersComponent } from './characters/characters.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { HttpClientModule } from "@angular/common/http";
 import { CharacterComponent } from './character/character.component';
+import { AddCharacterComponent } from './add-character/add-character.component';
+
+import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
+//import { NgxPaginationModule } from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -15,12 +19,14 @@ import { CharacterComponent } from './character/character.component';
     AboutUsComponent,
     CharactersComponent,
     InicioComponent,
-    CharacterComponent
+    CharacterComponent,
+    AddCharacterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

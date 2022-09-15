@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CharacterService } from "../character.service";
+import { Character } from '../models/character.model';
 
 @Component({
   selector: 'app-character',
@@ -9,16 +10,59 @@ import { CharacterService } from "../character.service";
 })
 export class CharacterComponent implements OnInit {
 
-  id:any;
-  character:any =null;
-  constructor(private route :ActivatedRoute, private characterService: CharacterService) {
-    this.id = parseInt(this.route.snapshot.paramMap.get('id')||"[]");
-  }
+  currentCharacter: Character = {
+    name: '',
+    status: '',
+    species: '',
+    gender: '',
+    origin: '',
+    image: ''
+  };
+  message = '';
+
+  constructor(private route :ActivatedRoute, private characterService: CharacterService, private router: Router) {}
 
   ngOnInit(): void {
-    this.characterService.retornar(this.id).subscribe(
-      result => this.character=result
-    )
+    this.message='';
+    this.getCharacter(this.route.snapshot.params['id']);
   }
+
+  getCharacter(id: string):void{
+    this.characterService.get(id)
+    .subscribe(
+      data => {
+        this.currentCharacter = data;
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    )};
+
+    updateCharacter(): void{
+      this.message='';
+
+      this.characterService.update(this.currentCharacter.id, this.currentCharacter)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.message = response.message ? response.message:'Este personaje se ha actualizado correctamente';
+        },
+        error => {
+          console.log(error);
+        })
+    }
+
+    deleteCharacter(): void{
+      this.characterService.delete(this.currentCharacter.id)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.router.navigate(['/characters']);
+        },
+        error => {
+          console.log(error);
+        })
+    }
 
 }
