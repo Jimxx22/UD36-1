@@ -7,6 +7,9 @@ const user_key = 'auth-user';
   providedIn: 'root'
 })
 export class TokenStorageService {
+
+  username:string ='';
+
   constructor() { }
 
   signOut():void{

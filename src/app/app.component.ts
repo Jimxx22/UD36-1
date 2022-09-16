@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'UD036-1';
   private roles: string[] = [];
   isLoggedIn = false
-  username?:string
+  username?:string | null;
 
   constructor (private tokenStorageService: TokenStorageService) { }
 
@@ -21,9 +21,9 @@ export class AppComponent {
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser()
-      this.roles = user.roles
-      //this.username = JSON.parse(localStorage.getItem('username')+'')
-      console.log(JSON.stringify(user).replace(/['"]+/g, ''));
+      this.roles = user.roles;
+      this.username = user.username;
+      console.log(this.tokenStorageService.getUser());
     }
   }
 

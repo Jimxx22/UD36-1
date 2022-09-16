@@ -17,15 +17,16 @@ export class AuthService {
 
   login(username:string, password:string):Observable<any>{
     return this.http.post(AUTH_API + 'login', {
-      username,
-      password
+      username: username,
+      password: password
     },httpOpt);
   }
 
 
   register(username:string, password:string):Observable<any>{
     return this.http.post(AUTH_API + 'signup', {
-      username,password
+      username: username,
+      password: password
     }, httpOpt);
   }
 
