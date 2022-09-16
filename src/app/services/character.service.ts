@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { Character } from './models/character.model';
+import { Character } from '../models/character.model';
 import { Observable } from "rxjs";
 
 const baseURL = "https://jgv-ud41-backend.herokuapp.com/characters";
