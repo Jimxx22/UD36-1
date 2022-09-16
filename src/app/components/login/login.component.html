@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="col-md-12 p-5">
+    <h2>LOGIN</h2>
+    <div class="mt-5">
+      <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="form-grup">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" name="username" [(ngModel)]="form.username" [ngModelOptions]="{standalone: true}" required #username="ngModel"/>
+          <div class="alert-danger" *ngIf="username.errors && f.submitted">
+            <div *ngIf="username.errors['required']">Username is requierd</div>
+          </div>
+        </div>
+        <div class="form-grup">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name="password" [(ngModel)]="form.password" [ngModelOptions]="{standalone: true}" required #password="ngModel"/>
+          <div class="alert-danger" *ngIf="password.errors && f.submitted">
+            <div *ngIf="password.errors['required']">Password is requierd</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block mt-5">Login</button>
+        </div>
+
+        <div class="alert alert-warning" *ngIf="f.submitted && isLogInFailed">
+          Login failed! <br/> {{errorMessage}}
+        </div>
+      </form>
+      <div class="alert alert-success" *ngIf="isLoggedIn">
+        Logged in as {{roles}}
+      </div>
+    </div>
+  </div>
+</div>

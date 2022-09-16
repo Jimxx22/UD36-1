@@ -1,34 +1,34 @@
 import { Component } from '@angular/core';
-import { CharacterService } from "./character.service";
+import { CharacterService } from "./services/character.service";
 import { Character } from './models/character.model';
+import { TokenStorageService } from "./services/token-storage.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'UD36-1';
+  title = 'UD036-1';
+  private roles: string[] = [];
+  isLoggedIn = false
+  username?:string
 
-  characters?:Character[];
-  currentCharacter: Character={};
-  currentIndex = -1;
-  name = '';
+  constructor (private tokenStorageService: TokenStorageService) { }
 
-  constructor(private characterService: CharacterService){}
+  ngOnInit():void {
+    this.isLoggedIn=!!this.tokenStorageService.getToken()
 
-  searchName(): void{
-    this.currentCharacter = {};
-    this.currentIndex = -1;
-    this.characterService.findByName(this.name)
-    .subscribe(
-      data => {
-        this.characters = data;
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      });
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser()
+      this.roles = user.roles
+      //this.username = JSON.parse(localStorage.getItem('username')+'')
+      console.log(JSON.stringify(user).replace(/['"]+/g, ''));
+    }
   }
 
+  logout():void{
+    this.tokenStorageService.signOut()
+    window.location.reload();
+  }
 }
